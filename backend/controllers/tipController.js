@@ -1,5 +1,5 @@
-import Milestone from '../models.js/Milestone.js';
-import Tip from '../models.js/Tip.js';
+import Milestone from '../models/Milestone.js';
+import Tip from '../models/Tip.js';
 
 export const addTip = async (req, res) => {
   const { content } = req.body;

@@ -1,4 +1,4 @@
-import Milestone from '../models.js/Milestone.js';
+import Milestone from '../models/Milestone.js';
 
 export const createMilestone = async (req, res) => {
   const { title, date, notes } = req.body;
