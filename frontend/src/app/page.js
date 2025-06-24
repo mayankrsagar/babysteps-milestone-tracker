@@ -8,6 +8,7 @@ import LoginForm from './components/LoginForm';
 import MilestoneForm from './components/MilestoneForm';
 import MilestoneList from './components/MilestoneList';
 import { useAuth } from './context/AuthContext';
+import Dashboard from './dashboard/page';
 import {
   createMilestone,
   getMilestones,
@@ -58,6 +59,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gray-50 py-8">
+      <Dashboard/>
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold text-gray-800">Milestone Tracker</h1>

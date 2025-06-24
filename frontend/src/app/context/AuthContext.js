@@ -12,11 +12,23 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // useEffect(() => {
+  //   const storedUser = localStorage.getItem('user');
+  //   if (storedUser) setUser(JSON.parse(storedUser));
+  //   setLoading(false);
+  // }, []);
+
   useEffect(() => {
+  try {
     const storedUser = localStorage.getItem('user');
     if (storedUser) setUser(JSON.parse(storedUser));
+  } catch (err) {
+    console.error('Failed to parse user from localStorage:', err);
+  } finally {
     setLoading(false);
-  }, []);
+  }
+}, []);
+
 
   const login = (userData, token) => {
     localStorage.setItem('user', JSON.stringify(userData));

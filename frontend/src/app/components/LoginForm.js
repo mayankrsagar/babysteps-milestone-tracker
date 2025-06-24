@@ -29,6 +29,8 @@ export default function LoginForm() {
       let token, user;
       if (isLogin) {
         ({ token, user } = await loginUser(formData.email, formData.password));
+        console.log(token);
+        console.log(user);
       } else {
 
         ({ token, user } = await registerUser(formData.name, formData.email, formData.password));

@@ -6,7 +6,6 @@ export async function fetchWithAuth(url, options = {}) {
   if (token) headers['Authorization'] = `Bearer ${token}`;
   const res = await fetch(`${API_BASE_URL}${url}`, { ...options, headers });
   if (!res.ok) throw new Error((await res.json()).message || 'API Error');
-console.log(res);
   return res.json();
 
 }
