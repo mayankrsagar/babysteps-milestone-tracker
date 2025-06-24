@@ -8,11 +8,10 @@ import { useRouter } from 'next/navigation';
 
 import MilestoneForm from '../components/MilestoneForm';
 import MilestoneList from '../components/MilestoneList';
-import { useAuth } from '../context/AuthContext';
 import { getMilestones } from '../services/milestones';
 
 export default function Dashboard() {
-  const { user, logout } = useAuth();
+
   const router = useRouter();
   const [milestones, setMilestones] = useState([]);
   useEffect(() => {

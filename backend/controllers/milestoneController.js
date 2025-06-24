@@ -44,7 +44,7 @@ export const deleteMilestone = async (req, res) => {
     const milestone = await Milestone.findById(req.params.id);
     if (!milestone || milestone.user.toString() !== req.user.id)
       return res.status(404).json({ msg: 'Milestone not found' });
-    await milestone.remove();
+    await Milestone.deleteOne({ _id: req.params.id, user: req.user.id });
     res.json({ msg: 'Milestone removed' });
   } catch (err) {
     console.error(err.message);
