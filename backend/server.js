@@ -13,7 +13,22 @@ const app = express();
 // Connect DB
 connectDB();
 
-app.use(cors());
+const allowedOrigins = [
+  'http://babysteps-milestone-tracker.vercel.app',      // your production frontend
+  'http://localhost:3000',                              // local dev frontend
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    callback(new Error(`CORS policy disallows access from ${origin}`));
+  },
+  credentials: true,   // if you ever need cookies/JWT in headers
+}));
 app.use(express.json());
 
 // Routes
